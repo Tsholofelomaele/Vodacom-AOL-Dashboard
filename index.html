@@ -1,13 +1,31 @@
-<div class="metric-box">
-  <h3>Total Leads</h3>
-  <p id="total-leads">7,262</p>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vodacom AOL Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Vodacom AOL Dashboard</h1>
+    <p>Ison Xperiences · CVM Outbound</p>
+  </header>
 
-<script>
-fetch('data.json')
-  .then(response => response.json())
-  .then(data => {
-    document.getElementById('total-leads').textContent = data.total_leads;
-  });
-</script>
-<link rel="stylesheet" href="style.css">
+  <section class="snapshot">
+    <div class="metric"><h3>Total Leads</h3><p id="total-leads">7,262</p></div>
+    <div class="metric"><h3>% Dialable</h3><p id="dialable">69.8%</p></div>
+    <div class="metric"><h3>Successful Contact</h3><p id="contact">5,926</p></div>
+    <div class="metric"><h3>True Contact (RPC)</h3><p id="rpc">4,508</p></div>
+    <div class="metric"><h3>Total Sales</h3><p id="sales">753</p></div>
+    <div class="metric"><h3>Conversion Rate</h3><p id="conversion">10.4%</p></div>
+  </section>
+
+  <section class="charts">
+    <canvas id="leadVolumeChart"></canvas>
+    <canvas id="performanceChart"></canvas>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
