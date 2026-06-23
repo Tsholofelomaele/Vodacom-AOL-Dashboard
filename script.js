@@ -31,3 +31,4 @@ new Chart(ctx2, {
     scales: { y: { beginAtZero: true } }
   }
 });
+fetch('Campaign AOL 22 June 2026.csv')
