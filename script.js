@@ -35,3 +35,12 @@ async function loadData() {
 
   renderDashboard(merged);
 }
+function renderDashboard(data) {
+  const totalLeads = data.length;
+  const successfulContacts = data.filter(d => d.Status === 'Contacted').length;
+  const rpcRate = ((successfulContacts / totalLeads) * 100).toFixed(1);
+
+  document.getElementById('total-leads').textContent = totalLeads;
+  document.getElementById('successful-contact').textContent = successfulContacts;
+  document.getElementById('rpc-rate').textContent = `${rpcRate}%`;
+}
