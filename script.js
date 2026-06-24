@@ -23,3 +23,15 @@ new Chart(ctx, {
     }]
   }
 });
+async function loadData() {
+  const campaignData = await d3.csv('Campaign AOL 22 June 2026.csv');
+  const agentData = await d3.csv('Agent Performance Summary_June-2026.csv');
+
+  // Example: merge by campaign ID
+  const merged = campaignData.map(c => ({
+    ...c,
+    agent: agentData.find(a => a.AgentID === c.AgentID)?.AgentName || 'Unknown'
+  }));
+
+  renderDashboard(merged);
+}
