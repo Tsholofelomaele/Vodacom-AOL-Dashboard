@@ -55,3 +55,37 @@ new Chart(document.getElementById('connectionChart'), {
     }]
   }
 });
+async function loadData() {
+  const campaignData = await d3.csv('Campaign AOL 22 June 2026.csv');
+  const outcomeData = await d3.csv('Agent Performance Summary_June-2026.csv');
+
+  // Perform join
+  const mergedData = joinByKeys(campaignData, outcomeData, 'CampaignID', 'OutcomeID');
+
+  renderDashboard(mergedData);
+}
+function joinByKeys(campaigns, outcomes, campaignKey, outcomeKey) {
+  const outcomeMap = new Map(outcomes.map(o => [o[outcomeKey], o]));
+
+  return campaigns.map(c => {
+    const matchedOutcome = outcomeMap.get(c[campaignKey]);
+    return {
+      ...c,
+      ...matchedOutcome, // merges outcome fields into campaign record
+    };
+  });
+}
+function renderDashboard(data) {
+  const totalLeads = data.length;
+  const successfulContacts = data.filter(d => d.Status === 'Contacted').length;
+  const rpcRate = ((successfulContacts / totalLeads) * 100).toFixed(1);
+  const totalSales = data.filter(d => d.Sale === 'Yes').length;
+  const conversionRate = ((totalSales / totalLeads) * 100).toFixed(1);
+
+  document.getElementById('total-leads').textContent = totalLeads;
+  document.getElementById('successful-contact').textContent = successfulContacts;
+  document.getElementById('rpc-rate').textContent = `${rpcRate}%`;
+  document.getElementById('total-sales').textContent = totalSales;
+  document.getElementById('conversion-rate').textContent = `${conversionRate}%`;
+}
+document.addEventListener('DOMContentLoaded', loadData);
