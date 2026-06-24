@@ -1,32 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Vodacom AOL Dashboard</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
-<body>
+<div class="dashboard">
   <header>
-    <h1>Vodacom AOL Dashboard</h1>
+    <h1>Vodacom Campaign Dashboard</h1>
     <p>Ison Xperiences · CVM Outbound</p>
   </header>
 
-  <section class="snapshot">
-    <div class="metric"><h3>Total Leads</h3><p id="total-leads">7,262</p></div>
-    <div class="metric"><h3>% Dialable</h3><p id="dialable">69.8%</p></div>
-    <div class="metric"><h3>Successful Contact</h3><p id="contact">5,926</p></div>
-    <div class="metric"><h3>True Contact (RPC)</h3><p id="rpc">4,508</p></div>
-    <div class="metric"><h3>Total Sales</h3><p id="sales">753</p></div>
-    <div class="metric"><h3>Conversion Rate</h3><p id="conversion">10.4%</p></div>
+  <section id="campaign-snapshot">
+    <div class="metric" id="total-leads"></div>
+    <div class="metric" id="dialable"></div>
+    <div class="metric" id="successful-contact"></div>
+    <div class="metric" id="rpc"></div>
+    <div class="metric" id="sales"></div>
+    <div class="metric" id="conversion"></div>
   </section>
 
-  <section class="charts">
-    <canvas id="leadVolumeChart"></canvas>
-    <canvas id="performanceChart"></canvas>
-  </section>
-
-  <script src="script.js"></script>
-</body>
-</html>
-<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <canvas id="connectionChart"></canvas>
+</div>
