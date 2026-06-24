@@ -11,3 +11,15 @@ async function loadData() {
 }
 
 loadData();
+const ctx = document.getElementById('connectionChart');
+new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: ['New Connections', 'Upgrades'],
+    datasets: [{
+      label: 'Leads',
+      data: [3053, 4209],
+      backgroundColor: ['#3b82f6', '#a855f7']
+    }]
+  }
+});
