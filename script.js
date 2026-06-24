@@ -44,3 +44,14 @@ function renderDashboard(data) {
   document.getElementById('successful-contact').textContent = successfulContacts;
   document.getElementById('rpc-rate').textContent = `${rpcRate}%`;
 }
+new Chart(document.getElementById('connectionChart'), {
+  type: 'bar',
+  data: {
+    labels: ['New Connections', 'Upgrades'],
+    datasets: [{
+      label: 'Leads',
+      data: [3053, 4209],
+      backgroundColor: ['#3b82f6', '#a855f7']
+    }]
+  }
+});
